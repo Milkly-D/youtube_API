@@ -7,11 +7,7 @@ from apiclient.discovery import build
 APY_KEY = '<your API key>'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
-<<<<<<< HEAD
-SEARCH_TEXT ='エンジニア'
-=======
 SEARCH_TEXT ='<search word>'
->>>>>>> origin/master
 
 channel_list = []
 video_list = []
