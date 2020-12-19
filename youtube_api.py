@@ -7,11 +7,7 @@ from apiclient.discovery import build
 APY_KEY = '<your API key>'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
-<<<<<<< HEAD
-SEARCH_TEXT ='エンジニア'
-=======
-SEARCH_TEXT ='<search word>'
->>>>>>> origin/master
+SEARCH_TEXT ='search word'
 
 channel_list = []
 video_list = []
@@ -31,9 +27,13 @@ def getChannelId(_num,_items):
 
 def getChannel():
     global num
-    response = youtube.search().list(q=SEARCH_TEXT, part='id,snippet', maxResults=10,type='channel').execute()
+    search_res = youtube.search().list(
+        q=SEARCH_TEXT, 
+        part='id,snippet', 
+        maxResults=10,
+        type='channel').execute()
 
-    for item in response.get('items', []):
+    for item in search_res.get('items', []):
         if item['id']['kind'] != 'youtube#channel':
             continue
         num += 1
@@ -45,10 +45,18 @@ def getChannel():
         print("Channel " + data["num"] + " : " + data["title"])
     print('******************')
 
-<<<<<<< HEAD
+def getChannelDetails(_channelId):
+    channel_res = youtube.channels().list(
+    part = 'snippet,statistics',
+    id = _channelId
+    ).execute()
+
+    for item in channel_res.get("items", []):
+        print('*' * 10)
+        print(json.dumps(item, indent=2, ensure_ascii=False))
+        print('*' * 10)
+
 
 getChannel()
-print(getChannelId(str(input('Channel Number: ')),channel_list))
-=======
-getChannel()
->>>>>>> origin/master
+#print(getChannelId(str(input('Channel Number: ')),channel_list))
+getChannelDetails(getChannelId(str(input('Channel Number: ')),channel_list))
