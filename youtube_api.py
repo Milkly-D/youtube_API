@@ -4,10 +4,14 @@
 import json
 from apiclient.discovery import build
 
-APY_KEY = 'AIzaSyDz_828wHuTU8w0vZ67nFbAA0zjqckHiTQ'
+APY_KEY = '<your API key>'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
+<<<<<<< HEAD
 SEARCH_TEXT ='エンジニア'
+=======
+SEARCH_TEXT ='<search word>'
+>>>>>>> origin/master
 
 channel_list = []
 video_list = []
@@ -41,6 +45,10 @@ def getChannel():
         print("Channel " + data["num"] + " : " + data["title"])
     print('******************')
 
+<<<<<<< HEAD
 
 getChannel()
 print(getChannelId(str(input('Channel Number: ')),channel_list))
+=======
+getChannel()
+>>>>>>> origin/master
